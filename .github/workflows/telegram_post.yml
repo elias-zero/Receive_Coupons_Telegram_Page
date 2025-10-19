@@ -1,0 +1,37 @@
+name: Post coupons to Telegram
+
+on:
+  schedule:
+    # every 2 hours at minute 0
+    - cron: '0 */2 * * *'
+  workflow_dispatch: {}  # allows manual run
+
+permissions:
+  contents: write   # needed to commit state.json back to repo
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # allow git push with GITHUB_TOKEN
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && pip install -r requirements.txt
+
+      - name: Run poster script
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          COUPONS_API_URL: "https://receivecoupons.com/api/my_api.php"
+          STATE_FILE: "state.json"
+          # GITHUB_TOKEN is available automatically
+        run: |
+          python scripts/post_to_telegram.py
