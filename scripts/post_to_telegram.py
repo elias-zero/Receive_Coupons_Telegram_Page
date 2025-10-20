@@ -98,15 +98,15 @@ def make_caption(c):
     parts = []
     title = c.get("title") or ""
     if title:
-        parts.append(f"<b>{title}</b>")
+        parts.append(f"🎉 <b>{title}</b>")
     parts.append("")  # blank line
-    discount_text = c.get("discount_text")
+    discount_text = c.get(f"🔥 <b>{discount_text}</b>")
     if discount_text:
         parts.append(discount_text)
     parts.append("")  # blank line
     code = c.get("code")
     if code:
-        parts.append(f"🔥 <b>الكوبون : </b> <code>{code}</code>")
+        parts.append(f"🎁 <b>الكوبون : </b> <code>{code}</code>")
     parts.append("")  # blank line
     countries = c.get("countries")
     if countries:
