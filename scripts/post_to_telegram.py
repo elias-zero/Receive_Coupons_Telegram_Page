@@ -96,35 +96,54 @@ def is_valid_coupon(coupon):
 def make_caption(c):
     # Fields: title, discount_text, code, countries, note, expires_at, purchase_link
     parts = []
+    
+    # العنوان
     title = c.get("title") or ""
     if title:
-        parts.append(f"🎉 <b>{title}</b>")
-    parts.append("")  # blank line
-    discount_text = c.get(f"🔥 <b>{discount_text}</b>")
+        parts.append(f"🎉 {title}")
+        parts.append("")
+    
+    # نص الخصم
+    discount_text = c.get("discount_text") or ""
     if discount_text:
-        parts.append(discount_text)
-    parts.append("")  # blank line
-    code = c.get("code")
+        parts.append(f"🔥 {discount_text}")
+        parts.append("")
+    
+    # الكوبون
+    code = c.get("code") or ""
     if code:
-        parts.append(f"🎁 <b>الكوبون : </b> <code>{code}</code>")
-    parts.append("")  # blank line
-    countries = c.get("countries")
+        parts.append(f"🎁 الكوبون : {code}")
+        parts.append("")
+    
+    # الدول
+    countries = c.get("countries") or ""
     if countries:
-        parts.append(f"🌍 <b>صالح لـ : </b> {countries}")
-    parts.append("")  # blank line
-    note = c.get("note")
+        parts.append(f"🌍 صالح لـ : {countries}")
+        parts.append("")
+    
+    # الملاحظة
+    note = c.get("note") or ""
     if note:
-        parts.append(f"📌 <b>ملاحظة : </b> {note}")
-    parts.append("")  # blank line
-    expires = c.get("expires_at")
+        parts.append(f"📌 ملاحظة : {note}")
+        parts.append("")
+    
+    # تاريخ الانتهاء
+    expires = c.get("expires_at") or ""
     if expires:
-        parts.append(f"⏳ <b>ينتهي في : </b> {expires}")
-    parts.append("")  # blank line
-    link = c.get("purchase_link")
+        parts.append(f"⏳ ينتهي في : {expires}")
+        parts.append("")
+    
+    # رابط الشراء
+    link = c.get("purchase_link") or ""
     if link:
-        parts.append(f"🛒 <b>رابط الشراء : </b> {link}")
-    parts.append("")  # blank line
-    parts.append("لمزيد من الكوبونات: https://receivecoupons.com/")
+        parts.append(f"🛒 رابط الشراء : {link}")
+        parts.append("")
+    
+    # رابط الموقع
+    parts.append("💎 لمزيد من الكوبونات زوروا موقعنا :")
+    parts.append("")
+    parts.append(" https://receivecoupons.com/")
+    
     caption = "\n".join(parts).strip()
 
     # truncate if too long
