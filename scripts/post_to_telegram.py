@@ -104,19 +104,19 @@ def make_caption(c):
         parts.append(discount_text)
     code = c.get("code")
     if code:
-        parts.append(f"🔖 <b>الكوبون:</b> <code>{code}</code>")
+        parts.append(f"🔥 <b>الكوبون:</b> <code>{code}</code>")
     countries = c.get("countries")
     if countries:
         parts.append(f"🌍 <b>صالح لـ:</b> {countries}")
     note = c.get("note")
     if note:
-        parts.append(f"💡 <b>ملاحظة:</b> {note}")
+        parts.append(f"📌 <b>ملاحظة:</b> {note}")
     expires = c.get("expires_at")
     if expires:
         parts.append(f"⏳ <b>ينتهي في:</b> {expires}")
     link = c.get("purchase_link")
     if link:
-        parts.append(f"🔗 <b>رابط الشراء:</b> {link}")
+        parts.append(f"🛒 <b>رابط الشراء:</b> {link}")
     parts.append("")  # blank line
     parts.append("لمزيد من الكوبونات: https://receivecoupons.com/")
     caption = "\n".join(parts).strip()
