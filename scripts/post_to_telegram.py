@@ -105,15 +105,19 @@ def make_caption(c):
     code = c.get("code")
     if code:
         parts.append(f"🔥 <b>الكوبون : </b> <code>{code}</code>")
+    parts.append("")  # blank line
     countries = c.get("countries")
     if countries:
         parts.append(f"🌍 <b>صالح لـ : </b> {countries}")
+    parts.append("")  # blank line
     note = c.get("note")
     if note:
         parts.append(f"📌 <b>ملاحظة : </b> {note}")
+    parts.append("")  # blank line
     expires = c.get("expires_at")
     if expires:
         parts.append(f"⏳ <b>ينتهي في : </b> {expires}")
+    parts.append("")  # blank line
     link = c.get("purchase_link")
     if link:
         parts.append(f"🛒 <b>رابط الشراء : </b> {link}")
