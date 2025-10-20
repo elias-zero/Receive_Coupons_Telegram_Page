@@ -112,7 +112,7 @@ def make_caption(c):
     # الكوبون
     code = c.get("code") or ""
     if code:
-        parts.append(f"🎁 الكوبون : {code}")
+        parts.append(f"🎁 <b>الكوبون :</b> <code>{code}</code>")
         parts.append("")
     
     # الدول
@@ -130,7 +130,13 @@ def make_caption(c):
     # تاريخ الانتهاء
     expires = c.get("expires_at") or ""
     if expires:
-        parts.append(f"⏳ ينتهي في : {expires}")
+        # تحويل التاريخ إلى صيغة DD-MM-YYYY
+        try:
+            dt = date_parser.parse(expires)
+            expires_formatted = dt.strftime("%d-%m-%Y")
+        except:
+            expires_formatted = expires
+        parts.append(f"⏳ ينتهي في : {expires_formatted}")
         parts.append("")
     
     # رابط الشراء
