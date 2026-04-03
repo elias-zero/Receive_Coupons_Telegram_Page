@@ -18,7 +18,7 @@ import requests
 from dateutil import parser as date_parser
 
 # Config (can override via env)
-API_URL = os.getenv("COUPONS_API_URL", "https://receivecoupons.com/api/my_api.php")
+API_URL = os.getenv("COUPONS_API_URL", "https://receivecoupons.com/api/my_api.php?only_active=1&all=1")
 STATE_FILE = os.getenv("STATE_FILE", "state.json")
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")  # e.g. @receivecoupons
