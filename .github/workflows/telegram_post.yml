@@ -30,7 +30,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          COUPONS_API_URL: "https://receivecoupons.com/api/my_api.php"
+          COUPONS_API_URL: "https://receivecoupons.com/api/my_api.php?only_active=1&all=1"
           STATE_FILE: "state.json"
           # GITHUB_TOKEN is available automatically
         run: |
